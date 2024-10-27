@@ -16,7 +16,6 @@ namespace Task2
                 {
                     Console.WriteLine("WARNING: File at {0}, couldn't be found!", path);
                 }
-                
             }
             else
             {

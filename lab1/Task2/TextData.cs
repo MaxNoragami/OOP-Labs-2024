@@ -21,46 +21,69 @@ namespace Task2
         public String? GetLongestWord() {return longestWord;}
 
         // Constructor
-        public TextData(String text)
+        public TextData(String? path, String? text)
         {
-            fileName = ExtractFilename();
+            fileName = ExtractFilename(path);
             this.text = text;
-            numberOfVowels = ExtractNumberOfVowels();
-            numberOfConsonants = ExtractNumberOfConsonants();
-            numberOfLetters = ExtractNumberOfLetters();
-            numberOfSentences = ExtractNumberOfSentences();
-            longestWord = ExtractLongestWord();
+            // numberOfVowels = ExtractNumberOfVowels();
+            // numberOfConsonants = ExtractNumberOfConsonants();
+            // numberOfLetters = ExtractNumberOfLetters();
+            // numberOfSentences = ExtractNumberOfSentences();
+            // longestWord = ExtractLongestWord();
         }
 
         // Parsing Logic
-        private string? ExtractLongestWord()
+        private string? ExtractFilename(String? path)
         {
-            throw new NotImplementedException();
+            String[] pathContent;
+
+            if(path != null)
+            {
+                if(path.Contains("\\"))
+                {
+                    pathContent = path.Split("\\"); 
+                }
+                else if(path.Contains("/"))
+                {
+                    pathContent = path.Split("/");
+                }
+                else
+                {
+                    return path;
+                }
+                return pathContent[pathContent.Length - 1];
+            }
+            return null;
         }
 
-        private int ExtractNumberOfSentences()
-        {
-            throw new NotImplementedException();
-        }
+        // private string? ExtractLongestWord()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
-        private int ExtractNumberOfLetters()
-        {
-            throw new NotImplementedException();
-        }
+        // private int ExtractNumberOfSentences()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
-        private int ExtractNumberOfConsonants()
-        {
-            throw new NotImplementedException();
-        }
+        // private int ExtractNumberOfLetters()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
-        private int ExtractNumberOfVowels()
-        {
-            throw new NotImplementedException();
-        }
+        // private int ExtractNumberOfConsonants()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
-        private string? ExtractFilename()
+        // private int ExtractNumberOfVowels()
+        // {
+        //     throw new NotImplementedException();
+        // }
+
+        public override string ToString()
         {
-            throw new NotImplementedException();
+            return string.Format("The file, {0}, ", GetFilename());
         }
 
     }

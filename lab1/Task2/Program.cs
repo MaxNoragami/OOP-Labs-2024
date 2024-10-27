@@ -8,7 +8,12 @@ namespace Task2
         {
             if(args.Length > 0)
             {
-                FileReader.ReadFileIntoString(args[0]);
+                foreach(String path in args)
+                {
+                    String? fileData = FileReader.ReadFileIntoString(path);
+                    TextData textData = new TextData(path, fileData);
+                    Console.WriteLine(textData.ToString());
+                }
             }
             else
             {
