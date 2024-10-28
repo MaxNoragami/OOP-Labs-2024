@@ -21,11 +21,11 @@ namespace Task3
             int otherSize = m.Height * m.Width;
             Console.WriteLine(
                 (currentSize > otherSize)? 
-                    $"The current model, {Model}, has a bigger size of {currentSize}px^2, than the the other model, {m.Model}, of size {otherSize}px^2." 
+                    $"The {Model} has a bigger size of {currentSize}px^2, than the {m.Model} of size {otherSize}px^2." 
                 : (currentSize < otherSize)?
-                    $"The other model, {m.Model}, has a bigger size of {otherSize}px^2, than the the current model, {Model}, of size {currentSize}px^2."
+                    $"The {m.Model} has a bigger size of {otherSize}px^2, than the {Model} of size {currentSize}px^2."
                 : 
-                    $"Both the current model, {Model}, and the other model , {m.Model}, have the same size of {currentSize}px^2."
+                    $"Both, {Model} and {m.Model}, have the same size of {currentSize}px^2."
             );
         }
 
@@ -33,11 +33,11 @@ namespace Task3
         {
             Console.WriteLine(
                 (Ppi > m.Ppi)? 
-                    $"The current model, {Model}, is sharper with a density of {Ppi}ppi, than the the other model, {m.Model}, with a density of {m.Ppi}ppi." 
+                    $"The {Model} is sharper with a density of {Ppi}ppi, than the {m.Model} with a density of {m.Ppi}ppi." 
                 : (Ppi < m.Ppi)?
-                    $"The other model, {m.Model}, is sharper with a density of {m.Ppi}ppi, than the the current model, {Model}, with a density of {Ppi}ppi." 
+                    $"The {m.Model} is sharper with a density of {m.Ppi}ppi, than the {Model} with a density of {Ppi}ppi." 
                 : 
-                    $"Both the current model, {Model}, and the other model , {m.Model}, have the same sharpness, the density being of {Ppi}ppi."
+                    $"Both, {Model} and {m.Model}, have the same sharpness, the density being of {Ppi}ppi."
             );
         }
 
