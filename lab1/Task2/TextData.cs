@@ -25,11 +25,11 @@ namespace Task2
         {
             fileName = ExtractFilename(path);
             this.text = text;
-            // numberOfVowels = ExtractNumberOfVowels();
-            // numberOfConsonants = ExtractNumberOfConsonants();
-            // numberOfLetters = ExtractNumberOfLetters();
-            // numberOfSentences = ExtractNumberOfSentences();
-            // longestWord = ExtractLongestWord();
+            numberOfVowels = ExtractNumberOfVowels();
+            numberOfConsonants = ExtractNumberOfConsonants();
+            numberOfLetters = numberOfVowels + numberOfConsonants;
+            numberOfSentences = ExtractNumberOfSentences();
+            longestWord = ExtractLongestWord();
         }
 
         // Parsing Logic
@@ -56,35 +56,83 @@ namespace Task2
             return null;
         }
 
-        // private string? ExtractLongestWord()
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        // private int ExtractNumberOfSentences()
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        // private int ExtractNumberOfLetters()
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        // private int ExtractNumberOfConsonants()
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        // private int ExtractNumberOfVowels()
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        public override string ToString()
-        {
-            return string.Format("The file, {0}, ", GetFilename());
+        private int ExtractNumberOfVowels()
+        {   
+            String? currentText = GetText();
+            int vowels = 0;
+            if(currentText != null)
+            {
+                currentText = currentText.ToLower();
+                for(int i = 0; i < currentText.Length; i++)
+                {
+                    if("aeiou".Contains(currentText[i]))
+                    {
+                        vowels++;
+                    }
+                }
+                return vowels;
+            }
+            return -1;
         }
+
+        private int ExtractNumberOfConsonants()
+        {
+            String? currentText = GetText();
+            int consonants = 0;
+            if(currentText != null)
+            {
+                currentText = currentText.ToLower();
+                for(int i = 0; i < currentText.Length; i++)
+                {
+                    if("bcdfghjklmnpqrstvwxyz".Contains(currentText[i]))
+                    {
+                        consonants++;
+                    }
+                }
+                return consonants;
+            }
+            return -1;
+        }
+
+        private int ExtractNumberOfSentences()
+        {
+            String? currentText = GetText();
+            if(currentText != null)
+            {   
+                currentText = currentText.Trim();
+                String[] sentences = currentText.Split(new char[] {'.','!','?'});
+                return sentences.Length - 1;
+            }
+            return -1;
+        }
+
+       private string? ExtractLongestWord()
+        {
+            string? currentText = GetText();
+            char[] symbols = { '!', ',', '?', '\\', '\"', '#', '$', '%', '&', '\'', '(', '-', '\'', ')', '*', '+', '.', '/', ':', ';', '?', '@', '[', ']', '^', '`', '{', '|', '}', '~' };
+
+            if (currentText != null)
+            {
+                foreach (char symbol in symbols)
+                {
+                    currentText = currentText.Replace(symbol, ' ');
+                }
+
+                string[] words = currentText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string? largestWord = "";
+                foreach (string word in words)
+                {
+                    if (word.Length > largestWord.Length)
+                    {
+                        largestWord = word;
+                    }
+                }
+                return largestWord;
+            }
+            return null;
+        }
+
 
     }
 }
