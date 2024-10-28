@@ -42,7 +42,8 @@ namespace Task1
         }
 
         public void CompareWithMonitor(Display m)
-        {
+        {   
+            Console.WriteLine("\n");
             CompareSize(m);
             CompareSharpness(m);
         }
