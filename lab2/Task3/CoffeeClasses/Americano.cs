@@ -1,6 +1,6 @@
 namespace Lab3.Task3
 {
-    class Americano : Coffee
+    sealed class Americano : Coffee
     {
         // Fields
         private int mlOfWater;
@@ -9,7 +9,7 @@ namespace Lab3.Task3
         protected int MlOfWater{get{return mlOfWater;}}
 
         // Methods 
-        public override void PrintCoffeeDetails()
+        public override sealed void PrintCoffeeDetails()
         {
             base.PrintCoffeeDetails();
             Console.WriteLine("Americano water: {0}", MlOfWater);

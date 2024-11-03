@@ -1,6 +1,6 @@
 namespace Lab3.Task3
 {
-    class SyrupCappuccino : Cappuccino
+    sealed class SyrupCappuccino : Cappuccino
     {
         // Fields
         private SyrupType syrup;
@@ -9,7 +9,7 @@ namespace Lab3.Task3
         protected SyrupType Syrup{get{return syrup;}}
 
         // Methods 
-        public override void PrintCoffeeDetails()
+        public override sealed void PrintCoffeeDetails()
         {
             base.PrintCoffeeDetails();
             Console.WriteLine("Syrup Cappuccino syrup type: {0}", Syrup);

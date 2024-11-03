@@ -1,6 +1,6 @@
 namespace Lab3.Task3
 {
-    class PumpkinSpiceLatte : Cappuccino
+    sealed class PumpkinSpiceLatte : Cappuccino
     {
         // Fields
         private int mgOfPumpkinSpice;
@@ -9,7 +9,7 @@ namespace Lab3.Task3
         protected int MgOfPumpkinSpice{get{return mgOfPumpkinSpice;}}
 
         // Methods 
-        public override void PrintCoffeeDetails()
+        public override sealed void PrintCoffeeDetails()
         {
             base.PrintCoffeeDetails();
             Console.WriteLine("Pumpkin Spice Latte pumpkin-spice: {0}", MgOfPumpkinSpice);
