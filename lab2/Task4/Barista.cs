@@ -16,6 +16,8 @@ namespace Lab3.Task4
         public String BaristaName {get{return baristaName;}}
 
         // Methods
+
+        // Requesting the coffee to be made
         public void RequestCoffee()
         {
             bool requestDone = false;
@@ -24,6 +26,8 @@ namespace Lab3.Task4
             Thread.Sleep(1000);
             Console.WriteLine("What would you like to drink, today?");
             Thread.Sleep(500);
+
+            // Gathering the details regarding which coffee types should be ordered
             do
             {
                 Console.Write("\nEnter coffee type: ");
@@ -39,10 +43,13 @@ namespace Lab3.Task4
                     if(addMore != null && (addMore.ToLower() == "yes" || addMore.ToLower() == "y")) continue;
                     requestDone = true;
                 }
-            } while(!requestDone);   
+            } while(!requestDone); 
+
+            // Making the desired coffee order  
             MakeOrder(input);
         }
         
+        // Method that calls other methods from the coffee classes in orer to serve it to the customer
         private void MakeOrder(List<string> drinks)
         {   
             Intensity intensity;
@@ -52,11 +59,13 @@ namespace Lab3.Task4
             int mgOfPumpkinSpice;
             Console.Clear();
             
+            // Iterating over each request in order to and adding making the required coffee while adding it to a list of coffeeOrders
             for(int i = 0; i < drinks.Count; i++)
             {
                 drinks[i] = drinks[i].ToLower();
                 Console.WriteLine("\nCurrent drink: {0}", drinks[i]);
                 Thread.Sleep(1000);
+                // Determining the coffee type
                 switch(drinks[i])
                 {
                     case "cappuccino":
@@ -105,6 +114,7 @@ namespace Lab3.Task4
             Thread.Sleep(1000);
         }
 
+        // Method for viewing the coffee orders 
         public void ViewOrderDetails()
         {
             if(coffeeOrders.Count != 0)
@@ -117,6 +127,7 @@ namespace Lab3.Task4
                     if(viewDetails != null && (viewDetails.ToLower() == "yes" || viewDetails.ToLower() == "y"))
                     {
                         Console.Clear();
+                        // Printing the details of each coffee order
                         for(int i = 0; i < coffeeOrders.Count(); i++)
                         {
                             Thread.Sleep(1000);

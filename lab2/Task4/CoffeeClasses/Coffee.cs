@@ -1,5 +1,6 @@
 namespace Lab3.Task4.Coffees
 {
+    // The abstract base class 
     internal abstract class Coffee
     {
         // Fields
@@ -11,11 +12,13 @@ namespace Lab3.Task4.Coffees
         internal String? CoffeeName{get{return coffeeName;} set{coffeeName = value;}}
 
         // Methods 
+        // The virtual method that get overridden by the subclasses
         internal virtual void PrintCoffeeDetails()
         {
             Console.WriteLine("{0} intensity: {1}", CoffeeName, CoffeeIntensity);
         }
 
+        // The base method for making the coffee
         protected Coffee MakeCoffee()
         {
             Console.WriteLine("\nMaking {0}", CoffeeName);
