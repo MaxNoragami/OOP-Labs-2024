@@ -131,7 +131,7 @@ namespace Lab3.Task4
                         for(int i = 0; i < coffeeOrders.Count(); i++)
                         {
                             Thread.Sleep(1000);
-                            Console.WriteLine("\n{0}. Details of {1}", i + 1, coffeeOrders[i].CoffeeName);
+                            Console.WriteLine("\nOrder Nr.{0}:", i + 1);
                             coffeeOrders[i].PrintCoffeeDetails();
                         }
                         validInput = true;

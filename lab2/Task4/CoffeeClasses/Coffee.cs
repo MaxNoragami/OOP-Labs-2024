@@ -15,7 +15,8 @@ namespace Lab3.Task4.Coffees
         // The virtual method that get overridden by the subclasses
         internal virtual void PrintCoffeeDetails()
         {
-            Console.WriteLine("{0} intensity: {1}", CoffeeName, CoffeeIntensity);
+            Console.WriteLine(CoffeeName);
+            Console.WriteLine("Coffee intensity: {0}", CoffeeIntensity);
         }
 
         // The base method for making the coffee
