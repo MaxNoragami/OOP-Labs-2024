@@ -6,7 +6,7 @@ namespace Lab3.Task3
         private int mgOfPumpkinSpice;
 
         // Properties
-        protected int MgOfPumpkinSpice{get{return mgOfPumpkinSpice;}}
+        private int MgOfPumpkinSpice{get{return mgOfPumpkinSpice;}}
 
         // Methods 
         public override sealed void PrintCoffeeDetails()

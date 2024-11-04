@@ -6,7 +6,7 @@ namespace Lab3.Task3
         private int mlOfWater;
 
         // Properties
-        protected int MlOfWater{get{return mlOfWater;}}
+        private int MlOfWater{get{return mlOfWater;}}
 
         // Methods 
         public override sealed void PrintCoffeeDetails()

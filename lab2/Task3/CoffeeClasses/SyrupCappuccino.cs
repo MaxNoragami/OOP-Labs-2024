@@ -6,7 +6,7 @@ namespace Lab3.Task3
         private SyrupType syrup;
 
         // Properties
-        protected SyrupType Syrup{get{return syrup;}}
+        private SyrupType Syrup{get{return syrup;}}
 
         // Methods 
         public override sealed void PrintCoffeeDetails()
