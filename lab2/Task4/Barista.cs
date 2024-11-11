@@ -73,7 +73,7 @@ namespace Lab3.Task4
                         intensity = Validator.GetIntensity();
                         mlOfMilk = Validator.AddExtra("MILK", "ml");
                         Thread.Sleep(500);
-                        coffeeOrders.Add(new Cappuccino(intensity, mlOfMilk).MakeCappuccino());
+                        coffeeOrders.Add(new Cappuccino(intensity, mlOfMilk)/*.MakeCappuccino()*/);
                         break;
                     }
                     case "americano":
@@ -81,7 +81,7 @@ namespace Lab3.Task4
                         intensity = Validator.GetIntensity();
                         mlOfWater = Validator.AddExtra("WATER", "ml");
                         Thread.Sleep(500);
-                        coffeeOrders.Add(new Americano(intensity, mlOfWater).MakeAmericano());
+                        coffeeOrders.Add(new Americano(intensity, mlOfWater)/*.MakeAmericano()*/);
                         break;
                     }
                     case "pumpkinspicelatte":
@@ -90,7 +90,7 @@ namespace Lab3.Task4
                         mlOfMilk = Validator.AddExtra("MILK", "ml");
                         mgOfPumpkinSpice = Validator.AddExtra("PUMPKIN SPICE", "mg");
                         Thread.Sleep(500);
-                        coffeeOrders.Add(new PumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice).MakePumpkinSpiceLatte());
+                        coffeeOrders.Add(new PumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice)/*.MakePumpkinSpiceLatte()*/);
                         break;
                     }
                     case "syrupcappuccino":
@@ -99,7 +99,7 @@ namespace Lab3.Task4
                         mlOfMilk = Validator.AddExtra("MILK", "ml");
                         syrupType = Validator.GetSyrup();
                         Thread.Sleep(500);
-                        coffeeOrders.Add(new SyrupCappuccino(intensity, mlOfMilk, syrupType).MakeSyrupCappuccino());
+                        coffeeOrders.Add(new SyrupCappuccino(intensity, mlOfMilk, syrupType)/*.MakeSyrupCappuccino()*/);
                         break;
                     }
                     default:
@@ -125,14 +125,25 @@ namespace Lab3.Task4
                     Console.WriteLine("Would you like to view your order's details? (Y/n)");
                     string? viewDetails = Console.ReadLine();
                     if(viewDetails != null && (viewDetails.ToLower() == "yes" || viewDetails.ToLower() == "y"))
-                    {
+                    {   
                         Console.Clear();
                         // Printing the details of each coffee order
                         for(int i = 0; i < coffeeOrders.Count(); i++)
                         {
                             Thread.Sleep(1000);
                             Console.WriteLine("\nOrder Nr.{0}:", i + 1);
+                            // TODO call here specific methods like makingSpiceLatte
                             coffeeOrders[i].PrintCoffeeDetails();
+
+                            Americano? americano = coffeeOrders[i] as Americano;
+                            Cappuccino? cappuccino = coffeeOrders[i] as Cappuccino;
+                            SyrupCappuccino? syrupCappuccino = coffeeOrders[i] as SyrupCappuccino;
+                            PumpkinSpiceLatte? pumpkinSpiceLatte = coffeeOrders[i] as PumpkinSpiceLatte;
+
+                            if (americano != null){americano.MakeAmericano();}
+                            else if (cappuccino != null){cappuccino.MakeCappuccino();}
+                            else if (syrupCappuccino != null){syrupCappuccino.MakeSyrupCappuccino();}
+                            else if (pumpkinSpiceLatte != null){pumpkinSpiceLatte.MakePumpkinSpiceLatte();}
                         }
                         validInput = true;
                     }
@@ -148,6 +159,8 @@ namespace Lab3.Task4
                 Console.WriteLine("No coffee orders have been requested!");
             }
         }
+
+
 
         // Constructor
         public Barista(String baristaName)

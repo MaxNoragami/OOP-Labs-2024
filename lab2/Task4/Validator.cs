@@ -77,12 +77,15 @@ namespace Lab3.Task4.Validation
 
         static internal int AddExtra(string type, string mUnit)
         {   bool isInputInt = false;
-            int amount;
+            int amount = -1;
             do
             {
-                Console.Write("Set amount of {0} to be added, in {1}: ", type, mUnit);
-                string? input = Console.ReadLine();
-                isInputInt = int.TryParse(input, out amount);
+                while(amount < 0)
+                {
+                    Console.Write("Set amount of {0} to be added, in {1}: ", type, mUnit);
+                    string? input = Console.ReadLine();
+                    isInputInt = int.TryParse(input, out amount);
+                }
             } while(!isInputInt);
             return amount;
         }
