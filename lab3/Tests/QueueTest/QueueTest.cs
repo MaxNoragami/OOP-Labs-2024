@@ -4,7 +4,6 @@ namespace QueueTest;
 
 public class QueueTest
 {
-    SimpleQueue<int> testSimpleQueueData = new SimpleQueue<int>();
     List<int> actualData = new List<int>(){1,2,3,4,5,5,4};
     
     private readonly ITestOutputHelper _testOutputHelper;
@@ -13,33 +12,42 @@ public class QueueTest
     {
         _testOutputHelper = testOutputHelper;
     }
-
-    private void EnqueueAllValues()
+    
+    private void EnqueueAllValues(IQueue<int> testQueueImplementation)
     {
         foreach (int value in actualData)
         {
-            testSimpleQueueData.Enqueue(value);
+            testQueueImplementation.Enqueue(value);
         }
     }
 
-    [Fact]
-    public void EnqueueValueTest()
-    {        
-        EnqueueAllValues();
-
-        Assert.Equal(testSimpleQueueData.Size(), actualData.Count);
+    public static IEnumerable<object[]> QueueImplementationsForTest()
+    {
+        yield return new object[]{new SimpleQueue<int>()};
+        yield return new object[]{new LinkedListQueue<int>()};
+        yield return new object[]{new CircularQueue<int>(10)};
     }
 
-    [Fact]
-    public void DequeueValueTest()
+    [Theory]
+    [MemberData(nameof(QueueImplementationsForTest))]
+    public void EnqueueValueTest(IQueue<int> testQueueImplementation)
+    {        
+        EnqueueAllValues(testQueueImplementation);
+
+        Assert.Equal(testQueueImplementation.Size(), actualData.Count);
+    }
+
+    [Theory]
+    [MemberData(nameof(QueueImplementationsForTest))]
+    public void DequeueValueTest(IQueue<int> testQueueImplementation)
     {
-        EnqueueAllValues();
+        EnqueueAllValues(testQueueImplementation);
 
         List<int> dequeuedTestData = new List<int>();
 
-        while (testSimpleQueueData.Size() > 0)
+        while (testQueueImplementation.Size() > 0)
         {   
-            int? element = testSimpleQueueData.Dequeue();
+            int? element = testQueueImplementation.Dequeue();
             if(element != null) dequeuedTestData.Add((int)element);
             _testOutputHelper.WriteLine("Dequeued: {0}", element);
             
@@ -47,12 +55,13 @@ public class QueueTest
         Assert.True(actualData.SequenceEqual(dequeuedTestData));
     }
 
-    [Fact]
-    public void PeekValueTest()
+    [Theory]
+    [MemberData(nameof(QueueImplementationsForTest))]
+    public void PeekValueTest(IQueue<int> testQueueImplementation)
     {
-        EnqueueAllValues();
+        EnqueueAllValues(testQueueImplementation);
 
-        var firstValue = testSimpleQueueData.Peek();
+        var firstValue = testQueueImplementation.Peek();
         Assert.Equal(firstValue, actualData[0]);
     }
 }

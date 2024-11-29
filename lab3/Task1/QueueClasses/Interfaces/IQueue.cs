@@ -1,6 +1,6 @@
 ﻿namespace lab3.Task1
 {
-    interface IQueue<T>
+    public interface IQueue<T>
     {
         public void Enqueue(T t);
         public T? Dequeue();
