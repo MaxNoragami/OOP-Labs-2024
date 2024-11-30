@@ -6,13 +6,6 @@ public class QueueTest
 {
     List<int> actualData = new List<int>(){1,2,3,4,5,5,4};
     
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public QueueTest(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
-    
     private void EnqueueAllValues(IQueue<int> testQueueImplementation)
     {
         foreach (int value in actualData)
@@ -49,7 +42,6 @@ public class QueueTest
         {   
             int? element = testQueueImplementation.Dequeue();
             if(element != null) dequeuedTestData.Add((int)element);
-            _testOutputHelper.WriteLine("Dequeued: {0}", element);
             
         }
         Assert.True(actualData.SequenceEqual(dequeuedTestData));
