@@ -33,7 +33,6 @@ public class CarStationTest
     public void ServingCarsFromStationQueueTest()
     {
         stationPeopleGas.ServeCars();
-        stationPeopleGas.ServeCars();
 
         Assert.True(simpleQueue.Size() == 0);
     }
