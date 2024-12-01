@@ -1,8 +1,8 @@
 namespace lab3.Task3
 {
-    public class PeopleDinner : IDineable
+    public class PeopleDiner : IDineable
     {
-        public void ServeDinner(int carId)
+        public void ServeDiner(int carId)
         {
             Console.WriteLine("Serving diner to PEOPLE from car {0}", carId);
             ServeData.IncrementDining();

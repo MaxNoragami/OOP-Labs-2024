@@ -1,4 +1,4 @@
-namespace lab3.Task3
+namespace lab3.Task4
 {
     public class CarStation 
     {
@@ -22,6 +22,9 @@ namespace lab3.Task3
                 // Serving the entities at the Diner
                 if(dequeuedCar.IsDining) diningService.ServeDiner(dequeuedCar.Id);
                 else ServeData.IncrementNotDining();
+                
+                if(dequeuedCar.Passengers == PassengersType.PEOPLE) ServeData.IncrementPeopleAmount();
+                else ServeData.IncrementRobotsAmount();
 
                 // Refuling the car
                 refuelingService.Refuel(dequeuedCar.Id);
@@ -36,6 +39,9 @@ namespace lab3.Task3
         {
             queue.Enqueue(car);
         }
+
+        public IDineable GetDiningService(){return diningService;}
+        public IRefuelable GetRefulingService(){return refuelingService;}
 
 
     }

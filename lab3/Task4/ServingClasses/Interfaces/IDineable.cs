@@ -1,4 +1,4 @@
-namespace lab3.Task3
+namespace lab3.Task4
 {
     public interface IDineable
     {

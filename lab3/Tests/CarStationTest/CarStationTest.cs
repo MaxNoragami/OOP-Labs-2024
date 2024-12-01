@@ -4,8 +4,8 @@ namespace CarStationTest;
 
 public class CarStationTest
 {
-    CarStation stationPeopleElectric = new CarStation(new PeopleDinner(), new ElectricStation(), new LinkedListQueue<Car>());
-    CarStation stationRobotsElectric = new CarStation(new RobotsDinner(), new ElectricStation(), new CircularQueue<Car>(10));
+    CarStation stationPeopleElectric = new CarStation(new PeopleDiner(), new ElectricStation(), new LinkedListQueue<Car>());
+    CarStation stationRobotsElectric = new CarStation(new RobotsDiner(), new ElectricStation(), new CircularQueue<Car>(10));
     
     private CarStation stationPeopleGas;
     private SimpleQueue<Car> simpleQueue;
@@ -13,7 +13,7 @@ public class CarStationTest
     public CarStationTest()
     {
         simpleQueue = new SimpleQueue<Car>();
-        stationPeopleGas = new CarStation(new PeopleDinner(), new GasStation(), simpleQueue);
+        stationPeopleGas = new CarStation(new PeopleDiner(), new GasStation(), simpleQueue);
     }
 
 
