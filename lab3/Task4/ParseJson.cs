@@ -7,12 +7,24 @@ namespace lab3.Task4
     {
        private static Car? Deserialize(String jsonData)
        {
-            throw new NotImplementedException();
+            if(File.Exists(jsonData))
+            {
+                jsonData = File.ReadAllText(jsonData);
+            }
+            Car? car = JsonConvert.DeserializeObject<Car>(jsonData);
+            if(car != null) return car;
+            return null;
        }
 
        public static void ToCar(LinkedListQueue<String> sourceJson, LinkedListQueue<Car> carsForServing)
        {
-            throw new NotImplementedException();
+            while(sourceJson.Size() > 0)
+            {
+                if(sourceJson.Peek() != null)
+                {
+                    carsForServing.Enqueue(Deserialize(sourceJson.Dequeue()));
+                }
+            }
        }
     }
 }
