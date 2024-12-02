@@ -14,6 +14,7 @@ namespace lab3.Src
             return carStations;
         }
 
+        // Choosing the right station for each car
         private void LeadToRightStation(Car car)
         {
             if(car.Type == CarType.GAS && car.Passengers == PassengersType.PEOPLE)
@@ -66,6 +67,7 @@ namespace lab3.Src
             }
         }
 
+        // Going through each added car from each station and serving them
         public void ServeCars(LinkedListQueue<Car> CarsForServing)
         {
             while(CarsForServing.Size() > 0)

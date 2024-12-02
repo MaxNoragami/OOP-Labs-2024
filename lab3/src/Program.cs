@@ -6,21 +6,24 @@
         {
             Console.WriteLine("Time to deal with some cars...");
 
+            // List of CarStation's
             List<CarStation> carStations = new List<CarStation>()
                 {
                     new CarStation(new PeopleDiner(), new GasStation(), new CircularQueue<Car>(10)),
-                    new CarStation(new RobotsDiner(), new GasStation(), new CircularQueue<Car>(10)),
+                    new CarStation(new RobotsDiner(), new GasStation(), new LinkedListQueue<Car>()),
                     new CarStation(new PeopleDiner(), new ElectricStation(), new CircularQueue<Car>(10)),
-                    new CarStation(new RobotsDiner(), new ElectricStation(), new CircularQueue<Car>(10))
+                    new CarStation(new RobotsDiner(), new ElectricStation(), new SimpleQueue<Car>())
                 };
             
             Semaphore semaphore = new Semaphore(carStations);
 
             LinkedListQueue<Car> carQueue = new LinkedListQueue<Car>();
 
-            Thread thread1 = new Thread(() => AddingCarsToRightStation(carQueue, semaphore));
-            Thread thread2 = new Thread(() => ServingTheCarsFromStations(carStations));
-
+            // Task 1 & Task 2
+            Thread thread1 = new Thread(() => AddingCarsToRightStation(carQueue, semaphore)); // Adding the cars to the station
+            Thread thread2 = new Thread(() => ServingTheCarsFromStations(carStations)); // Serving the cars
+            
+            // Starting the tasks
             thread1.Start();
             thread2.Start();
         }
